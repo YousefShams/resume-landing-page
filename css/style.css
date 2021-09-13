@@ -1,6 +1,6 @@
 
 html {
-  scroll-behavior: smooth;
+
 }
 
 body {
@@ -26,9 +26,9 @@ body {
 
 /* Sticky Header of the page*/
 .page-header {
-  position: sticky;
+  position: fixed;
   box-sizing: border-box; /* b-b to include the padding to the width or height*/
-  top:-1;
+  top:0;
   font: bold 55px myFont;
   text-align: center;
   padding : 10px 0 8px 0;
@@ -214,24 +214,4 @@ footer {
   background: inherit;
   margin: 4px 41px 0 0;
   cursor: pointer;
-}
-
-/* Custom Webkit ScrollBar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
