@@ -1,0 +1,237 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(#d3cce3, #e9e4f0);
+  margin: 0;
+  padding: 0;
+}
+
+
+/*container for the sections and the nav menu*/
+#container {
+  position: relative;
+  display: flex;
+}
+
+
+/* Custom Font */
+@font-face {
+  font-family: myFont;
+  src: url(sunshine.ttf);
+}
+
+
+/* Sticky Header of the page*/
+.page-header {
+  position: sticky;
+  box-sizing: border-box; /* b-b to include the padding to the width or height*/
+  top:0;
+  font: bold 55px myFont;
+  text-align: center;
+  padding : 10px 0 8px 0;
+  background: black;  /*linear-gradient(to top,#8e9eab,#eef2f3);/**/
+  box-shadow: -3px 4px 6px rgba(0,0,0,0.3);
+  z-index: 3;
+  color: white;
+  letter-spacing: 2px;
+}
+
+
+/* The progress bar at the header */
+#header-bar {
+  height:10px;
+  margin-top: 1px;
+  width: 0vw;
+  background: linear-gradient(to right,#fc00ff,#00dbde) ;  /* linear-gradient(to right,#0052D4,#65C7F7,#9CECFB);*/
+  border-radius: 20px; /* making it more circular */
+  max-width: 99.5vw;
+}
+
+
+/*Navigation Menu*/
+.nav-menu {
+  display:flex; /* using flex to make the items flexable and justifying them */
+  flex-direction: column;
+  justify-content:flex-start;
+  overflow: auto;  /*if we had more sections like +10 we will be able to scroll through them*/
+  position: sticky; /*making it to stick to the viewport*/
+  top:93px;
+  background: rgba(0,20,40,1);
+  margin:0;
+  padding: 0;
+  font: 20px sans-serif;
+  height: 100vh;
+  width: 15vw;
+  border-right: 2px solid rgba(120,120,120,0.3);
+  box-shadow: 3px -1px 3px rgba(0,0,0,0.4);
+}
+
+/* the list at the nav menu */
+.nav-menu ul {
+  height: 100%;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*nav list items*/
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  list-style: none; /* removing the circles of every list item*/
+  margin-bottom: 0;
+  box-sizing: border-box;
+  color: white;
+  width: 100%;
+  height: 15%;
+  border-bottom: 2px groove grey;
+  border-bottom: 2px groove white;
+}
+
+/*the section button inside the list item*/
+#list-btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color:inherit;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/* the text inside the buttons of the nav-menu*/
+.button-text {
+  font: 600 35px myFont;
+  color: inherit; 
+  text-align: center;
+  letter-spacing: 1px;
+  padding-right: 15px;
+}
+
+/* the button on the top left corner that shows or hides the list */
+#header-btn {
+ float: left; /* floating it to the left of the header*/
+ background-color: inherit; /* inheriting the bg color*/
+ margin: 0;
+ padding: 6px 18px 0 50px;
+ font-size: 50px;
+ color: white;
+ border: none;
+ cursor: pointer; /* changing the cursor to a pointer cursor when hovering over it*/
+}
+
+/* setting the color of the list item (button) to the grey color when hovring over it*/
+li:hover {
+  background-color: rgba(100,100,100,0.2);
+}
+
+/* setting the text color of the button to lightblue when hovring over it*/
+.button-text:hover {
+  color: lightblue;
+}
+
+/* the section container */
+.sec-container {
+  margin-top: 30px;
+  width: 85vw;
+}
+
+/*Sections*/
+section {
+  display: block;
+  font: 300 35px myFont;
+  text-align: left;
+  padding: 85px 150px 0 120px;
+  height: auto;
+  width: auto;
+  color: black;
+  margin-bottom: 100px;
+}
+
+/* last section*/
+section:last-child {
+  margin-bottom: 250px;
+}
+
+/* the text at the header */
+.my-website {
+  margin: 0 150px 0 142px;
+}
+
+#active-section-box {
+  position: fixed;
+  border-radius: 20px;
+  font: 600 35px myFont,sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff;
+  box-sizing: border-box;
+  padding-top: 3.5rem;
+  text-align: center;
+  /* transform: rotate(-90deg); */
+  top: 3rem;
+  left: 87%;
+  width: 13%;
+  height: 7rem;
+  background: #000000;
+}
+
+footer {
+  display: flex;
+  justify-content: center; /* aligning it to the center at the horizontally*/
+  align-items: center; /* aligning it to the center at the vertically*/
+  background: black;
+  box-sizing: border-box;
+  padding-top:60px;
+  padding:0;
+  width: 100%;
+  height: 8vh;
+  font: 400 8pt sans-serif;
+  color: white;
+}
+
+#up-icon {
+  float: right;
+  transform: rotate(180deg);
+  margin-right: 0;
+  padding: 0;
+  color: white;
+  background-color: inherit;
+  font-size: 61px;
+  border: none;
+}
+
+#up-btn {
+  border: none;
+  padding: 0px;
+  margin: 0;
+  float: right;
+  background: inherit;
+  margin: 4px 41px 0 0;
+  cursor: pointer;
+}
+
+/* Custom Webkit ScrollBar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
