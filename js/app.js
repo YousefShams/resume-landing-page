@@ -245,7 +245,7 @@ setTimeout(function()
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
   sectionsPos.push(docBottomPos);
   activeSection();
-
+  documnet.body.style.width="102vw";
   /*Event that get called whenever we are scrolling
   it excutes the currentSection function which i explained before what it should be doing
   if you want to know what its doing again continue reading the next comment*/
@@ -254,7 +254,7 @@ setTimeout(function()
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
   document.addEventListener('scroll', activeSection);
-},200);
+},500);
 
 
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
