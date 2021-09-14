@@ -1,6 +1,5 @@
 
 
-
 //GLOBAL VARIABLES
 
 let listButton; //the button that shows or hides the nav menu
@@ -176,7 +175,7 @@ function activeSection()
   /*Showing the nav-menu when scrolling
   And hiding it when you are reading the content (when you are not scrolling)*/
   //Note you can cancel this feature by pressing the top left button at the header
-  /*if (canHide) //if we canHide the nav-menu
+  if (canHide) //if we canHide the nav-menu
   {
   navMenu.style.display='flex'; // show it when scrolling
   isListOpened=true;    
@@ -195,7 +194,7 @@ function activeSection()
     navMenu.style.display='flex';
     else
     navMenu.style.display='none';
-  }*/
+  }
 
  }, 300);
 
