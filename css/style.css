@@ -1,8 +1,4 @@
 
-html {
-
-}
-
 body {
   background: linear-gradient(#d3cce3, #e9e4f0);
   margin: 0;
@@ -29,7 +25,7 @@ body {
   position: sticky;
   box-sizing: border-box; /* b-b to include the padding to the width or height*/
   top:-2px;
-  font: bold 55px myFont;
+  font: bold 25px myFont;
   text-align: center;
   padding : 10px 0 8px 0;
   background: black;  /*linear-gradient(to top,#8e9eab,#eef2f3);/**/
@@ -42,12 +38,12 @@ body {
 
 /* The progress bar at the header */
 #header-bar {
-  height:10px;
+  height:3px;
   margin-top: 1px;
   width: 0vw;
   background: linear-gradient(to right,#fc00ff,#00dbde) ;  /* linear-gradient(to right,#0052D4,#65C7F7,#9CECFB);*/
   border-radius: 20px; /* making it more circular */
-  max-width: 99.5vw;
+  max-width: 90vw;
 }
 
 
@@ -117,7 +113,7 @@ li {
  float: left; /* floating it to the left of the header*/
  background-color: inherit; /* inheriting the bg color*/
  margin: 0;
- padding: 6px 18px 0 50px;
+ padding: 6px 8px 0 20px;
  font-size: 50px;
  color: white;
  border: none;
@@ -202,7 +198,7 @@ footer {
   padding: 0;
   color: white;
   background-color: inherit;
-  font-size: 61px;
+  font-size: 21px;
   border: none;
 }
 
@@ -212,6 +208,6 @@ footer {
   margin: 0;
   float: right;
   background: inherit;
-  margin: 4px 41px 0 0;
+  margin: 4px 21px 0 0;
   cursor: pointer;
 }
