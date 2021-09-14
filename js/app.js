@@ -252,8 +252,8 @@ setTimeout(function()
   /* Here we are checking the current position of the viewport "scrollY" if it falls between 
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
-  //document.addEventListener('scroll', activeSection);
-},10);
+  document.addEventListener('scroll', activeSection);
+},500);
 
 
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
