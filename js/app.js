@@ -245,7 +245,6 @@ setTimeout(function()
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
   sectionsPos.push(docBottomPos);
   activeSection();
-  document.body.style.width="102vw";
   /*Event that get called whenever we are scrolling
   it excutes the currentSection function which i explained before what it should be doing
   if you want to know what its doing again continue reading the next comment*/
