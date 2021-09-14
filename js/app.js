@@ -1,4 +1,6 @@
 
+/
+
 //GLOBAL VARIABLES
 
 let listButton; //the button that shows or hides the nav menu
@@ -135,7 +137,7 @@ function activeSection()
 
   
   //console.log(currViewPos,'\n',...sectionsPos);
-
+ setTimeout(function(){
   for (let j=0; j< sectionsPos.length-1;j++)
   { 
       start=sectionsPos[j];
@@ -174,7 +176,7 @@ function activeSection()
   /*Showing the nav-menu when scrolling
   And hiding it when you are reading the content (when you are not scrolling)*/
   //Note you can cancel this feature by pressing the top left button at the header
-  if (canHide) //if we canHide the nav-menu
+  /*if (canHide) //if we canHide the nav-menu
   {
   navMenu.style.display='flex'; // show it when scrolling
   isListOpened=true;    
@@ -193,7 +195,9 @@ function activeSection()
     navMenu.style.display='flex';
     else
     navMenu.style.display='none';
-  }
+  }*/
+
+ }, 300);
 
   //this line is for the progress bar at the header that shows where are you on the page
   //we get this bar and set the width to the percentage of the current position we are at
@@ -245,6 +249,7 @@ setTimeout(function()
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
   sectionsPos.push(docBottomPos);
   activeSection();
+
   /*Event that get called whenever we are scrolling
   it excutes the currentSection function which i explained before what it should be doing
   if you want to know what its doing again continue reading the next comment*/
@@ -253,7 +258,7 @@ setTimeout(function()
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
   document.addEventListener('scroll', activeSection);
-},500);
+},200);
 
 
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
