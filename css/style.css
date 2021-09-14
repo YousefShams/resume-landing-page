@@ -28,7 +28,7 @@ body {
 .page-header {
   position: sticky;
   box-sizing: border-box; /* b-b to include the padding to the width or height*/
-  top:-1px;
+  top:-2px;
   font: bold 55px myFont;
   text-align: center;
   padding : 10px 0 8px 0;
@@ -53,7 +53,7 @@ body {
 
 /*Navigation Menu*/
 .nav-menu {
-  display:flex; /* using flex to make the items flexable and justifying them */
+  display:none; /* using flex to make the items flexable and justifying them */
   flex-direction: column;
   justify-content:flex-start;
   overflow: auto;  /*if we had more sections like +10 we will be able to scroll through them*/
