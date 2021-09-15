@@ -173,27 +173,6 @@ function activeSection()
   /*Showing the nav-menu when scrolling
   And hiding it when you are reading the content (when you are not scrolling)*/
   //Note you can cancel this feature by pressing the top left button at the header
-  if (canHide) //if we canHide the nav-menu
-  {
-  navMenu.style.display='flex'; // show it when scrolling
-  isListOpened=true;    
-  clearTimeout(timeoutVar); //clearing the timeout if we scroll again to not show it then hide it
-  timeoutVar=setTimeout(function() //timeout function to hide the nav-menu by 2.5 secs after we stop scrolling
-  {
-    navMenu.style.display='none';
-    isListOpened=false;
-  },1500);
-
-  }
-
-  else //if we cant hide the nav-menu
-  {
-    if (isListOpened)
-    navMenu.style.display='flex';
-    else
-    navMenu.style.display='none';
-  }
-
  }, 300);
 
   //this line is for the progress bar at the header that shows where are you on the page
