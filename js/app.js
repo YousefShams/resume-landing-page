@@ -1,5 +1,4 @@
 
-
 //GLOBAL VARIABLES
 
 let listButton; //the button that shows or hides the nav menu
@@ -33,10 +32,10 @@ function getSectionsPos()
 {
   const sectionsPos=[]; //List for the Y-Axis Positions of every section element
 
-  for ( let i=0; i< sections.length;i++)
+  for ( let sec of sections)
   {
   //the position of the section in the document
-  sectionsPos.push(sections[i].offsetTop - screenHeight*0.26) ;
+  sectionsPos.push(sec.offsetTop - screenHeight*0.26);
   //offsetTop basically returns the position from the element to its nearest positioned parent
   //which is the body here 
   }
@@ -49,7 +48,6 @@ function getSectionsPos()
 //as well as rotating the top left button to show some kind of animation to make the page more dynamic.
 function dropListFunc ()
 {
-  canHide=false;
   if (isOpenable)
   {
     if (isListOpened) {
@@ -247,7 +245,7 @@ setTimeout(function()
   //variable that stores the last position at the document
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
   sectionsPos.push(docBottomPos);
-  activeSection();
+  //activeSection();
 
   /*Event that get called whenever we are scrolling
   it excutes the currentSection function which i explained before what it should be doing
@@ -256,7 +254,7 @@ setTimeout(function()
   /* Here we are checking the current position of the viewport "scrollY" if it falls between 
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
-  document.addEventListener('scroll', activeSection);
+  //document.addEventListener('scroll', activeSection);
 },200);
 
 
@@ -291,3 +289,5 @@ document.body.onresize=function()
 };
 
 });
+
+
