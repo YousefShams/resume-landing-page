@@ -32,9 +32,8 @@ function getSectionsPos()
 {
   const sectionsPos=[]; //List for the Y-Axis Positions of every section element
 
-  for ( let sec of sections)
+  for (let sec of sections)
   {
-  //the position of the section in the document
   sectionsPos.push(sec.offsetTop - screenHeight*0.26);
   //offsetTop basically returns the position from the element to its nearest positioned parent
   //which is the body here 
@@ -48,6 +47,7 @@ function getSectionsPos()
 //as well as rotating the top left button to show some kind of animation to make the page more dynamic.
 function dropListFunc ()
 {
+  canHide=false;
   if (isOpenable)
   {
     if (isListOpened) {
@@ -173,6 +173,27 @@ function activeSection()
   /*Showing the nav-menu when scrolling
   And hiding it when you are reading the content (when you are not scrolling)*/
   //Note you can cancel this feature by pressing the top left button at the header
+  if (canHide) //if we canHide the nav-menu
+  {
+  navMenu.style.display='flex'; // show it when scrolling
+  isListOpened=true;    
+  clearTimeout(timeoutVar); //clearing the timeout if we scroll again to not show it then hide it
+  timeoutVar=setTimeout(function() //timeout function to hide the nav-menu by 2.5 secs after we stop scrolling
+  {
+    navMenu.style.display='none';
+    isListOpened=false;
+  },1500);
+
+  }
+
+  else //if we cant hide the nav-menu
+  {
+    if (isListOpened)
+    navMenu.style.display='flex';
+    else
+    navMenu.style.display='none';
+  }
+
  }, 300);
 
   //this line is for the progress bar at the header that shows where are you on the page
@@ -224,7 +245,7 @@ setTimeout(function()
   //variable that stores the last position at the document
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
   sectionsPos.push(docBottomPos);
-  //activeSection();
+  activeSection();
 
   /*Event that get called whenever we are scrolling
   it excutes the currentSection function which i explained before what it should be doing
@@ -233,7 +254,7 @@ setTimeout(function()
   /* Here we are checking the current position of the viewport "scrollY" if it falls between 
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
-  //document.addEventListener('scroll', activeSection);
+  document.addEventListener('scroll', activeSection);
 },200);
 
 
@@ -243,7 +264,29 @@ navMenu= document.querySelector('.nav-menu'); //the navigation menu
 
 
 //Event that handles the page on resizing by re-setting most of the position related variabels again 
+document.body.onresize=function() 
+{
+  console.log('resized'); //715 457
+  screenHeight=window.innerHeight;
+  sectionsPos= getSectionsPos();
+  docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
+  sectionsPos.push(docBottomPos);
 
+  if (window.innerHeight<548 || window.innerWidth<955)
+  {
+    navMenu.style.display="none";
+    isOpenable=false;
+  }
+
+  else
+  {
+    isOpenable=true;
+    if (isListOpened)
+    navMenu.style.display="flex";
+    else
+    navMenu.style.display="none";
+  }
+};
 
 });
 
