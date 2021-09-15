@@ -33,11 +33,9 @@ function getSectionsPos()
   const sectionsPos=[]; //List for the Y-Axis Positions of every section element
 
   for (let sec of sections)
-  {
   sectionsPos.push(sec.offsetTop - screenHeight*0.26);
   //offsetTop basically returns the position from the element to its nearest positioned parent
   //which is the body here 
-  }
   return sectionsPos;
 }
 
@@ -91,6 +89,7 @@ function addNewNavSections()
   sections.forEach(function(sec)
   {
     const newSectionButton=document.createElement('li'); //creating a list navigation item
+    newSectionButton.classList.add('default-li');
     //adding the button to the list item
     newSectionButton.innerHTML=`<button id="list-btn" onclick="navToSection()" 
     name='section${navSectionsLen+1}'> <span class="button-text">${sec.dataset.nav}</span> </button> </li>`;
@@ -109,8 +108,8 @@ function navToSection ()
 {
 
   let activeElem= document.activeElement;
-  const elemNum=Number(activeElem.name.slice(7))-1; //getting the number of the section out of the name of the button
-  sections[elemNum].scrollIntoView(true);
+  const secNum=Number(activeElem.name.slice(7))-1; //getting the number of the section out of the name of the button
+  sections[secNum].scrollIntoView(true);
 
   //this line is for the progress bar at the header that shows where are you on the page
   //we get this bar and set the width to the percentage of the current position we are at 
@@ -145,24 +144,23 @@ function activeSection()
       the nav menu and then break, if false go to the next iteration in the loop. */
       if (currViewPos >= start && currViewPos < end)
       {
+        
         if (j==sections.length-1) //Showing the up button when at the bottom of the page (last section)
         {
         upIcon.style.transform="rotate(0deg)";
         upBtn.dataset.section="1";
         }
+
         else {
         upIcon.style.transform="rotate(180deg)";
-        upBtn.dataset.section=""+sections.length;
+        upBtn.dataset.section=sections.length.toString();
         }
-
 
         for (let navSection of navSections)
         {
-          navSection.style.borderLeft="0";//here unhighlighting all of them
-          navSection.style.color="white";
+          navSection.classList.remove('active-li');//here unhighlighting all of them
         }
-        navSections[j].style.borderLeft="5px solid lightblue";//highlighting the new one
-        navSections[j].style.color="aqua";
+        navSections[j].classList.add('active-li');//highlighting the new one
         activeSectionBox.innerHTML=sections[j].dataset.nav;
 
         break;
@@ -173,7 +171,7 @@ function activeSection()
   /*Showing the nav-menu when scrolling
   And hiding it when you are reading the content (when you are not scrolling)*/
   //Note you can cancel this feature by pressing the top left button at the header
-  if (canHide) //if we canHide the nav-menu
+  /*if (canHide) //if we canHide the nav-menu
   {
   navMenu.style.display='flex'; // show it when scrolling
   isListOpened=true;    
@@ -192,7 +190,7 @@ function activeSection()
     navMenu.style.display='flex';
     else
     navMenu.style.display='none';
-  }
+  }*/
 
  }, 300);
 
