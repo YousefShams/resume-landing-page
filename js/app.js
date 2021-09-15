@@ -264,29 +264,7 @@ navMenu= document.querySelector('.nav-menu'); //the navigation menu
 
 
 //Event that handles the page on resizing by re-setting most of the position related variabels again 
-document.body.onresize=function() 
-{
-  console.log('resized'); //715 457
-  screenHeight=window.innerHeight;
-  sectionsPos= getSectionsPos();
-  docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
-  sectionsPos.push(docBottomPos);
 
-  if (window.innerHeight<548 || window.innerWidth<955)
-  {
-    navMenu.style.display="none";
-    isOpenable=false;
-  }
-
-  else
-  {
-    isOpenable=true;
-    if (isListOpened)
-    navMenu.style.display="flex";
-    else
-    navMenu.style.display="none";
-  }
-};
 
 });
 
