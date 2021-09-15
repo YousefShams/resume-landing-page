@@ -78,11 +78,12 @@ body {
 }
 
 /*nav list items*/
-li {
+.default-li {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   list-style: none; /* removing the circles of every list item*/
+  border-left: 0;
   margin-bottom: 0;
   box-sizing: border-box;
   color: white;
@@ -101,6 +102,11 @@ li {
   background-color: inherit;
   border: none;
   cursor: pointer;
+}
+
+.active-li {
+  color: aqua;
+  border-left: 5px solid lightblue;
 }
 
 /* the text inside the buttons of the nav-menu*/
