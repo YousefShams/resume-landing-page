@@ -10,7 +10,10 @@ body {
 }
 
 /*container for the sections and the nav menu*/
-
+#container {
+  position: relative;
+  display: flex;
+}
 
 /* Custom Font */
 @font-face {
