@@ -7,6 +7,8 @@ body {
   background: linear-gradient(#d3cce3, #e9e4f0);
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /*container for the sections and the nav menu*/
@@ -214,24 +216,4 @@ footer {
   background: inherit;
   margin: 4px 41px 0 0;
   cursor: pointer;
-}
-
-/* Custom Webkit ScrollBar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
