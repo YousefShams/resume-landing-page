@@ -112,7 +112,7 @@ function navToSection ()
   sections[secNum].scrollIntoView(true);
 
   //this line is for the progress bar at the header that shows where are you on the page
-  //we get this bar and set the width to the percentage of the current position we are at 
+  //we get this bar and set the width to the per at 
   document.querySelector('#header-bar').style.width= (scrollY*100)/docBottomPos+1+"vw";  
 }
 
@@ -145,7 +145,7 @@ function activeSection()
       if (currViewPos >= start && currViewPos < end)
       {
         
-        if (j==sections.length-1) //Showing the up button when at the bottom of the page (last section)
+        /*if (j==sections.length-1) //Showing the up button when at the bottom of the page (last section)
         {
         upIcon.style.transform="rotate(0deg)";
         upBtn.dataset.section="1";
@@ -161,7 +161,7 @@ function activeSection()
           navSection.classList.remove('active-li');//here unhighlighting all of them
         }
         navSections[j].classList.add('active-li');//highlighting the new one
-        activeSectionBox.innerHTML=sections[j].dataset.nav;
+        activeSectionBox.innerHTML=sections[j].dataset.nav;*/
 
         break;
       }
@@ -171,7 +171,7 @@ function activeSection()
   /*Showing the nav-menu when scrolling
   And hiding it when you are reading the content (when you are not scrolling)*/
   //Note you can cancel this feature by pressing the top left button at the header
-  /*if (canHide) //if we canHide the nav-menu
+  if (canHide) //if we canHide the nav-menu
   {
   navMenu.style.display='flex'; // show it when scrolling
   isListOpened=true;    
@@ -190,7 +190,7 @@ function activeSection()
     navMenu.style.display='flex';
     else
     navMenu.style.display='none';
-  }*/
+  }
 
  }, 300);
 
