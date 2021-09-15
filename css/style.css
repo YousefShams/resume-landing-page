@@ -164,3 +164,24 @@ section:last-child {
   margin-bottom: 250px;
 }
 
+#up-icon {
+  float: right;
+  transform: rotate(180deg);
+  margin-right: 0;
+  padding: 0;
+  color: white;
+  background-color: inherit;
+  font-size: 60px;
+  border: none;
+}
+
+#up-btn {
+  border: none;
+  padding: 0px;
+  margin: 0;
+  float: right;
+  background: inherit;
+  margin: 4px 41px 0 0;
+  cursor: pointer;
+}
+
