@@ -18,6 +18,7 @@ let isListOpened=true; //boolean to check if the navigation menu is opened or cl
 let isOpenable=true;  //boolean to check if the navigation menu can be opened or not
 let timeoutVar=false;  // variable for storing a return value from setTimeout()
 let canHide=true; //boolean to determine if the nav-menu can auto hide or show based on scrolling 
+let isIconRotated=false; //checking if the top right scroll button is rotated or not
 //***********************************************************************************
 
 
@@ -130,6 +131,7 @@ function activeSection()
   const currViewPos= window.scrollY+0.5; //the current position the user is currently viewing (viewport position)
   let start;
   let end;
+  navMenu.classList.remove('hidden-nav-menu') ;
 
   
   //console.log(currViewPos,'\n',...sectionsPos);
@@ -146,12 +148,14 @@ function activeSection()
       {
         if (j==sections.length-1) //Showing the up button when at the bottom of the page (last section)
         {
-        upIcon.style.transform="rotate(0deg)";
-        upBtn.dataset.section="1";
+         isIconRotated=true; 
+        upIcon.classList.add("rotated-up-icon"); //adding a class that rotates the icon
+        upBtn.dataset.section="1"; //giving the data-nav a value of 1 to scroll to section1
         }
         else {
-        upIcon.style.transform="rotate(180deg)";
-        upBtn.dataset.section=sections.length.toString();
+          if (isIconRotated)
+        upIcon.classList.remove("rotated-up-icon"); //removing the class that rotates the icon
+        upBtn.dataset.section=sections.length.toString(); //giving the data-nav a value of the last section
         }
 
         for (let navSection of navSections)
@@ -171,26 +175,25 @@ function activeSection()
   //Note you can cancel this feature by pressing the top left button at the header
   if (canHide) //if we canHide the nav-menu
   {
-  navMenu.style.display='flex'; // show it when scrolling
+  // show it when scrolling
   isListOpened=true;    
   clearTimeout(timeoutVar); //clearing the timeout if we scroll again to not show it then hide it
   timeoutVar=setTimeout(function() //timeout function to hide the nav-menu by 2.5 secs after we stop scrolling
   {
-    navMenu.style.display='none';
+    navMenu.classList.add('hidden-nav-menu') ;
+    upIcon.classList.add("rotated-up-icon");
     isListOpened=false;
-  },1500);
+  },2000);
 
   }
-
+  
   else //if we cant hide the nav-menu
   {
-    if (isListOpened)
-    navMenu.style.display='flex';
-    else
-    navMenu.style.display='none';
+    if (!isListOpened)
+    navMenu.classList.add('hidden-nav-menu') ;
   }
 
- }, 300);
+ }, 100);
 
   //this line is for the progress bar at the header that shows where are you on the page
   //we get this bar and set the width to the percentage of the current position we are at
@@ -211,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 //SETTING THE VARIABLES
-upBtn=document.getElementById('up-btn');
-upIcon=document.getElementById('up-icon');
+upBtn=document.getElementById('up-btn'); //button scrolls to the top or to the bottom of the page
+upIcon=document.querySelector('.up-icon'); // the icon of that button
 listButton=document.querySelector('.fa-bars'); //the button that shows or hides the nav menu
 headerBar=document.querySelector('#header-bar'); // the page progress bar
 screenHeight=window.innerHeight;
@@ -262,7 +265,7 @@ navMenu= document.querySelector('.nav-menu'); //the navigation menu
 //Event that handles the page on resizing by re-setting most of the position related variables again 
 document.body.onresize=function() 
 {
-  console.log('resized'); //715 457
+  console.log('resized');
   screenHeight=window.innerHeight;
   sectionsPos= getSectionsPos();
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
@@ -270,17 +273,16 @@ document.body.onresize=function()
 
   if (window.innerHeight<548 || window.innerWidth<955)
   {
-    navMenu.style.display="none";
+    navMenu.classList.add('hidden-nav-menu') ;
     isOpenable=false;
   }
 
   else
   {
     isOpenable=true;
-    if (isListOpened)
-    navMenu.style.display="flex";
-    else
-    navMenu.style.display="none";
+    if (!isListOpened)
+    navMenu.classList.add('hidden-nav-menu') ;
+
   }
 };
 
