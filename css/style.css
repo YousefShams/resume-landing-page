@@ -32,6 +32,7 @@ body {
   font: bold 55px myFont;
   text-align: center;
   padding : 10px 0 8px 0;
+  overflow: auto;
   background: black;  /*linear-gradient(to top,#8e9eab,#eef2f3);/**/
   z-index: 3;
   color: white;
@@ -46,7 +47,7 @@ body {
   width: 0vw;
   background: linear-gradient(to right,#fc00ff,#00dbde) ;  /* linear-gradient(to right,#0052D4,#65C7F7,#9CECFB);*/
   border-radius: 20px; /* making it more circular */
-  max-width: 98.6vw;
+  max-width: 99.3vw;
 }
 
 
@@ -106,7 +107,7 @@ body {
 }
 
 
-/* my-active-class that do the job of highlighting */
+/* my-active-class that does the job of highlighting */
 .active-li {
   color: aqua;
   border-left: 5px solid lightblue;
@@ -124,7 +125,7 @@ body {
 /* the button on the top left corner that shows or hides the list */
 #header-btn {
  float: left; /* floating it to the left of the header*/
- background-color: inherit; /* inheriting the bg color*/
+ background: rgba(0,0,0,0); 
  margin: 0;
  padding: 6px 18px 0 50px;
  font-size: 48px;
@@ -168,24 +169,24 @@ section:last-child {
 
 /* the text at the header */
 .my-website {
-  margin: 0 150px 0 142px;
+  margin-right: 32px;
 }
 
 #active-section-box {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
-  font: 600 35px myFont,sans-serif;
-  font-size: 34px;   font-weight: 600;
+  font: 600 25px myFont,sans-serif;
   letter-spacing: 1px;
   color: #ffffff;
   box-sizing: border-box;
-  padding-top: 3.5rem;
-  text-align: center;
-  /* transform: rotate(-90deg); */
-  top: 3rem;
-  left: 87%;
-  width: 13%;
-  height: 7rem;
+  padding-top: 1.5rem;
+  top: 4rem;
+  left: 89.123%;
+  width: 11%;
+  height: 5.5rem;
   background: #000000;
 }
 
@@ -226,7 +227,7 @@ footer {
   padding: 0px;
   margin: 0;
   float: right;
-  background: inherit;
+  background: rgba(0,0,0,0);
   margin: 4px 41px 0 0;
   cursor: pointer;
 }
