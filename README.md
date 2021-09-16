@@ -5,7 +5,7 @@
 * [Description](#description)
 * [Dependencies](#dependencies)
 * [Usage](#usage)
-
+* [References](#references)
 
 ## Description
 
@@ -30,3 +30,9 @@
   2. CSS file: at `root/css`.
   3. HTML file: at the `root` folder.
 - You are ready to go now.  
+
+
+## References
+
+1. [W3Schools](https://w3schools.com) : 
+2. [MDN Web Docs](https://developer.mozilla.org/ar/docs/Web/CSS)
