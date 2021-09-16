@@ -1,8 +1,12 @@
-<html lang="en"><head>
-        <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/ad9a5d9052.js" crossorigin="anonymous"></script>
+	<script src="js/app.js"></script>
 	<title>My Landing Page</title>
 </head>
 
@@ -13,15 +17,15 @@
 			<!--Icon For the Top Left Button on the header--><i class="fa fa-bars"></i> </button>
 		<!--MyWebsite Header Title--><span class="my-website"><span style="font-weight: 500;">My</span>Website</span>
 		<!--Link to scroll to the top of the page-->
-		<button id="up-btn" onclick="scrollBtn()" data-section="1"> <i class="fas fa-angle-up" id="up-icon" aria-hidden="true" style="transform: rotate(0deg);"></i> </button>
+		<button id="up-btn" onclick="scrollBtn()" data-section="1"> <i class="fas fa-angle-up" id="up-icon" aria-hidden="true"></i> </button>
 		<!--This is a progress bar that shows where are you on the page-->
-		<div id="header-bar" style="width: 99.0227vw;"> </div>
+		<div id="header-bar"> </div>
 	</header>
 	<!--The Main Container (contains the four sections and the nav list)-->
 	<main id="container">
-		<nav class="nav-menu" style="display: none;">
+		<nav class="nav-menu">
 			<!-- The Empty Navigation List-->
-			<ul> <li class="default-li"><button id="list-btn" onclick="navToSection()" name="section1"> <span class="button-text">Section 1</span> </button> </li><li class="default-li"><button id="list-btn" onclick="navToSection()" name="section2"> <span class="button-text">Section 2</span> </button> </li><li class="default-li"><button id="list-btn" onclick="navToSection()" name="section3"> <span class="button-text">Section 3</span> </button> </li><li class="default-li active-li"><button id="list-btn" onclick="navToSection()" name="section4"> <span class="button-text">Section 4</span> </button> </li></ul>
+			<ul> </ul>
 		</nav>
 		<div class="sec-container">
          <section id="section1" data-nav="Section 1">
@@ -89,10 +93,10 @@
       </div>
    </main>
 	<!--Position fixed div that shows the current active section-->
-	
+	<div id="active-section-box"> Section </div>
 	<!--Footer-->
+	<footer> Copyright @ 2021 My Inc. All rights reserved.</footer>
 	<!--JavaScript-->
+</body>
 
-
-
-</body></html>
+</html>
