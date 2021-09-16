@@ -52,13 +52,13 @@ function dropListFunc ()
     if (isListOpened) {
       isListOpened=false;
       listButton.style.transform='rotate(90deg)';
-      navMenu.style.display="none";
+      navMenu.classList.add('hidden-nav-menu');
     }
       
       else {
         isListOpened=true;
         listButton.style.transform='rotate(0deg)';
-        navMenu.style.display="flex";
+        navMenu.classList.remove('hidden-nav-menu');
       }
   }
 }
@@ -131,8 +131,11 @@ function activeSection()
   const currViewPos= window.scrollY+0.5; //the current position the user is currently viewing (viewport position)
   let start;
   let end;
-  navMenu.classList.remove('hidden-nav-menu') ;
 
+  if (isOpenable && canHide) {
+  listButton.style.transform='rotate(0deg)';
+  navMenu.classList.remove('hidden-nav-menu');
+  }
   
   //console.log(currViewPos,'\n',...sectionsPos);
  setTimeout(function(){
@@ -163,7 +166,7 @@ function activeSection()
           navSection.classList.remove('active-li');//here unhighlighting all of them
         }
         navSections[j].classList.add('active-li');//highlighting the new one
-        activeSectionBox.innerHTML=sections[j].dataset.nav;
+        activeSectionBox.innerHTML=j+1;
 
         break;
       }
@@ -180,8 +183,8 @@ function activeSection()
   clearTimeout(timeoutVar); //clearing the timeout if we scroll again to not show it then hide it
   timeoutVar=setTimeout(function() //timeout function to hide the nav-menu by 2.5 secs after we stop scrolling
   {
-    navMenu.classList.add('hidden-nav-menu') ;
-    upIcon.classList.add("rotated-up-icon");
+    navMenu.classList.add('hidden-nav-menu');
+    listButton.style.transform='rotate(90deg)';
     isListOpened=false;
   },2000);
 
@@ -189,8 +192,8 @@ function activeSection()
   
   else //if we cant hide the nav-menu
   {
-    if (!isListOpened)
-    navMenu.classList.add('hidden-nav-menu') ;
+    if (isListOpened && isOpenable)
+    navMenu.classList.remove('hidden-nav-menu') ;
   }
 
  }, 100);
@@ -254,7 +257,7 @@ setTimeout(function()
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
   document.addEventListener('scroll', activeSection);
-},200);
+},300);
 
 
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
@@ -280,8 +283,9 @@ document.body.onresize=function()
   else
   {
     isOpenable=true;
-    if (!isListOpened)
-    navMenu.classList.add('hidden-nav-menu') ;
+    if (isListOpened)
+    navMenu.classList.remove('hidden-nav-menu') ;
+
 
   }
 };
