@@ -4,6 +4,7 @@ html {
 }
 
 body {
+  background: linear-gradient(#d3cce3, #e9e4f0);
   margin: 0;
   padding: 0;
 }
@@ -12,7 +13,6 @@ body {
 #container {
   position: relative;
   display: flex;
-  height:2000vh;
 }
 
 
@@ -25,12 +25,7 @@ body {
 
 /* Sticky Header of the page*/
 .page-header {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
   position: sticky;
-  -webkit-transform: translate3d(0,0,0);
   width: auto;
   box-sizing: border-box; /* b-b to include the padding to the width or height*/
   top:0;
@@ -61,13 +56,8 @@ body {
   display:flex; /* using flex to make the items flexable and justifying them */
   flex-direction: column;
   justify-content:flex-start;
-  overflow: auto;
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;/*if we had more sections like +10 we will be able to scroll through them*/
+  overflow: auto;  /*if we had more sections like +10 we will be able to scroll through them*/
   position: sticky; /*making it to stick to the viewport*/
-  -webkit-transform: translate3d(0,0,0);
   top:93px;
   background: rgba(0,20,40,1);
   margin:0;
