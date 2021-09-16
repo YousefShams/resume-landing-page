@@ -33,7 +33,7 @@ body {
   text-align: center;
   padding : 10px 0 8px 0;
   background: black;  /*linear-gradient(to top,#8e9eab,#eef2f3);/**/
-  box-shadow: -3px 4px 6px rgba(0,0,0,0.3);
+  box-shadow: rgba(blue, 0.7) 0 10px $blur;
   z-index: 3;
   color: white;
   letter-spacing: 2px;
@@ -66,7 +66,7 @@ body {
   height: 100vh;
   width: 15vw;
   border-right: 2px solid rgba(120,120,120,0.3);
-  box-shadow: 3px -1px 3px rgba(0,0,0,0.4);
+  box-shadow: rgba(blue, 0.7) 0 10px $blur;
 }
 
 /* the list at the nav menu */
