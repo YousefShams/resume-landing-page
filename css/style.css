@@ -78,13 +78,6 @@ body {
   border-right: 2px solid rgba(120,120,120,0.3);
 }
 
-@supports (position: sticky) {
-
-  .page-header {
-    position: relative;
-  }
-}
-
 .hidden-nav-menu {
   display: none;
 }
