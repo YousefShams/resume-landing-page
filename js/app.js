@@ -268,7 +268,6 @@ navMenu= document.querySelector('.nav-menu'); //the navigation menu
 //Event that handles the page on resizing by re-setting most of the position related variables again 
 document.body.onresize=function() 
 {
-  console.log('resized');
   screenHeight=window.innerHeight;
   sectionsPos= getSectionsPos();
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
