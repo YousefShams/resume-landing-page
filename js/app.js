@@ -211,7 +211,7 @@ function activeSection()
 
   //here is just some code to reach something like position:sticky (with pos: fixed) casue it was not working properly for me 
   footerOffset=Footer.getBoundingClientRect().y;
-  if (navMenuOffset >= footerOffset)
+  if (navMenuOffset > footerOffset)
   {
     if (!isNavAbs) {
     isNavFixed=false;
@@ -221,7 +221,7 @@ function activeSection()
     }
   }
 
-  else
+  else if (navMenuOffset <= footerOffset)
   {
     if (!isNavFixed) {
     isNavFixed=true;
