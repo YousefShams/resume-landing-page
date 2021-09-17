@@ -57,7 +57,7 @@ body {
   justify-content:flex-start;
   overflow: auto;  /*if we had more sections like +10 we will be able to scroll through them*/
   position: fixed; /*making it to stick to the viewport*/
-  bottom:0;
+  top:93px;
   background: rgba(0,20,40,1);
   margin:0;
   padding: 0;
