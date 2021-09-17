@@ -20,11 +20,11 @@ let isOpenable=true;  //boolean to check if the navigation menu can be opened or
 let timeoutVar=false;  // variable for storing a return value from setTimeout()
 let canHide=true; //boolean to determine if the nav-menu can auto hide or show based on scrolling 
 let isIconRotated=false; //checking if the top right scroll button is rotated or not
-let navMenuHeight; // nav menu height
-let isNavFixed=true; // is nav menu has position: fixed?
+let isNavFixed=false; // is nav menu has position: fixed?
 let isNavAbs=false; // is nav menu has position: absolute?
 let navMenuOffset; // nav menu offset from the viewport
 let footerOffset; // footer offset from the viewport
+let secContainer;
 //***********************************************************************************
 
 
@@ -254,6 +254,7 @@ upIcon=document.querySelector('.up-icon'); // the icon of that button
 listButton=document.querySelector('.fa-bars'); //the button that shows or hides the nav menu
 headerBar=document.querySelector('#header-bar'); // the page progress bar
 screenHeight=window.innerHeight;
+secContainer=document.querySelector('.sec-container');
 Footer=document.querySelector('footer'); //footer
 sections=document.querySelectorAll('section'); //array of all section elements
 upBtn.dataset.section=""+sections.length; //giving the data of the up button the last section number to be able to scroll to it
@@ -295,10 +296,6 @@ setTimeout(function()
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
 navMenu= document.querySelector('.nav-menu'); //the navigation menu
 navMenuOffset=navMenu.getBoundingClientRect().bottom;
-navMenu.style.top="93px";
-//setting the height of the nav-menu to be: 100vh minus the pixels of the header
-navMenuHeight= navMenu.style.height=Number(getComputedStyle(navMenu,null).height.slice(0,-2))-Number(getComputedStyle(header,null).height.slice(0,-2))+'px';
-
 //................
 
 
