@@ -32,7 +32,6 @@ body {
   font: bold 55px myFont;
   text-align: center;
   padding : 10px 0 8px 0;
-  overflow: auto;
   background: black;  /*linear-gradient(to top,#8e9eab,#eef2f3);/**/
   z-index: 3;
   color: white;
@@ -180,7 +179,7 @@ section:last-child {
   border-radius: 20px;
   font: 600 25px myFont,sans-serif;
   letter-spacing: 1px;
-  color: #ffffff;
+  color: cyan;
   box-sizing: border-box;
   padding-top: 1.5rem;
   top: 4rem;
@@ -230,6 +229,16 @@ footer {
   background: rgba(0,0,0,0);
   margin: 4px 41px 0 0;
   cursor: pointer;
+}
+
+/* when hovering at the top right icon, this property will override the previous color*/
+.up-icon:hover {
+  color : aqua;
+}
+
+/* when hovering at the top left icon, this property will override the previous color*/
+.bars-icon:hover {
+  color : aqua;
 }
 
 /* Custom Webkit ScrollBar */
