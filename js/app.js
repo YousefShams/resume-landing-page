@@ -208,8 +208,9 @@ function activeSection()
   //we get this bar and set the width to the percentage of the current position we are at
   headerBar.style.width= (scrollY*100)/docBottomPos+1+"vw";
 
-  footerOffset=Footer.getBoundingClientRect().y;
 
+  //here is just some code to reach something like position:sticky (with pos: fixed) casue it was not working properly for me 
+  footerOffset=Footer.getBoundingClientRect().y;
   if (navMenuOffset >= footerOffset)
   {
     if (!isNavAbs) {
@@ -252,9 +253,9 @@ upIcon=document.querySelector('.up-icon'); // the icon of that button
 listButton=document.querySelector('.fa-bars'); //the button that shows or hides the nav menu
 headerBar=document.querySelector('#header-bar'); // the page progress bar
 screenHeight=window.innerHeight;
-Footer=document.querySelector('footer');
+Footer=document.querySelector('footer'); //footer
 sections=document.querySelectorAll('section'); //array of all section elements
-upBtn.dataset.section=""+sections.length;
+upBtn.dataset.section=""+sections.length; //giving the data of the up button the last section number to be able to scroll to it
 activeSectionBox= document.getElementById('active-section-box');
 navSectionsLen=0; //the number of the buttons on the nav menu
 //...................
@@ -293,6 +294,7 @@ setTimeout(function()
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
 navMenu= document.querySelector('.nav-menu'); //the navigation menu
 navMenuOffset=navMenu.getBoundingClientRect().bottom;
+navMenu.style.top="93px";
 //setting the height of the nav-menu to be: 100vh minus the pixels of the header
 navMenuHeight= navMenu.style.height=Number(getComputedStyle(navMenu,null).height.slice(0,-2))-Number(getComputedStyle(header,null).height.slice(0,-2))+'px';
 
