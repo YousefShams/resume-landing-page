@@ -25,7 +25,7 @@ body {
 
 /* Sticky Header of the page*/
 .page-header {
-  position: header;
+  position: fixed;
   width: 100%;
   box-sizing: border-box; /* b-b to include the padding to the width or height*/
   top:0;
