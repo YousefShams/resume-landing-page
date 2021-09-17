@@ -25,8 +25,8 @@ body {
 
 /* Sticky Header of the page*/
 .page-header {
-  position: sticky;
-  width: auto;
+  position: header;
+  width: 100%;
   box-sizing: border-box; /* b-b to include the padding to the width or height*/
   top:0;
   font: bold 55px myFont;
