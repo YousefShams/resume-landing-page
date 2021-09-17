@@ -217,18 +217,19 @@ function activeSection()
     isNavFixed=false;
     isNavAbs=true;
     navMenu.removeAttribute('style');
-    navMenu.style.position="absolute";
+    navMenu.style.position="sticky";
+    secContainer.style.marginLeft='0';
     }
   }
 
-  else if (navMenuOffset <= footerOffset)
+  else
   {
     if (!isNavFixed) {
     isNavFixed=true;
     isNavAbs=false;
     navMenu.removeAttribute('style');
     navMenu.style.position="fixed";
-    navMenu.style.top="93px";
+    secContainer.style.marginLeft='170px';
     }
   }
 }
