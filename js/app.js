@@ -34,9 +34,9 @@ function getSectionsPos()
   const sectionsPos=[]; //List for the Y-Axis Positions of every section element
 
   for (let sec of sections)
-  sectionsPos.push(sec.offsetTop - screenHeight*0.26);
-  //offsetTop basically returns the position from the element to its nearest positioned parent
-  //which is the body here 
+  sectionsPos.push(scrollY + sec.getBoundingClientRect().y - screenHeight/2);
+  //getBoundingClientRect basically returns number that represents how far away an element is from the viewport.
+  //to get the offset of an element relative to the document we add scrollY 
   return sectionsPos;
 }
 
@@ -51,14 +51,14 @@ function dropListFunc ()
   {
     if (isListOpened) {
       isListOpened=false;
-      listButton.style.transform='rotate(90deg)';
-      navMenu.classList.add('hidden-nav-menu');
+      listButton.style.transform="rotate(90deg)";
+      navMenu.classList.add("hidden-nav-menu");
     }
       
       else {
         isListOpened=true;
-        listButton.style.transform='rotate(0deg)';
-        navMenu.classList.remove('hidden-nav-menu');
+        listButton.style.transform="rotate(0deg)";
+        navMenu.classList.remove("hidden-nav-menu");
       }
   }
 }
@@ -86,12 +86,13 @@ function addNewNavSections()
   /*Creating a documnet frag to to append all the added sections to it and then
   append the doc frag to the document. This is more efficient and more performant with a bigger project*/
   let docFrag=document.createDocumentFragment(); 
-  const navSectionMenu= document.querySelector('.nav-menu').firstElementChild;
+  const navSectionMenu= document.querySelector(".nav-menu").firstElementChild;
   sections.forEach(function(sec)
   {
-    const newSectionButton=document.createElement('li'); //creating a list navigation item
-    newSectionButton.classList.add('default-li');
+    const newSectionButton=document.createElement("li"); //creating a list navigation item
+    newSectionButton.classList.add("default-li");
     //adding the button to the list item
+    //it could be done with an anchor easily but i wanted to try it with a button
     newSectionButton.innerHTML=`<button id="list-btn" onclick="navToSection()" 
     name='section${navSectionsLen+1}'> <span class="button-text">${sec.dataset.nav}</span> </button> </li>`;
     navSectionsLen++;
@@ -114,7 +115,7 @@ function navToSection ()
 
   //this line is for the progress bar at the header that shows where are you on the page
   //we get this bar and set the width to the percentage of the current position we are at 
-  document.querySelector('#header-bar').style.width= (scrollY*100)/docBottomPos+1+"vw";  
+  document.querySelector("#header-bar").style.width= (scrollY*100)/docBottomPos+1+"vw";  
 }
 
 
@@ -133,8 +134,8 @@ function activeSection()
   let end;
 
   if (isOpenable && canHide) {
-  listButton.style.transform='rotate(0deg)';
-  navMenu.classList.remove('hidden-nav-menu');
+  listButton.style.transform="rotate(0deg)";
+  navMenu.classList.remove("hidden-nav-menu");
   }
   
   //console.log(currViewPos,'\n',...sectionsPos);
@@ -163,9 +164,9 @@ function activeSection()
 
         for (let navSection of navSections)
         {
-          navSection.classList.remove('active-li');//here unhighlighting all of them
+          navSection.classList.remove("active-li");//here unhighlighting all of them
         }
-        navSections[j].classList.add('active-li');//highlighting the new one
+        navSections[j].classList.add("active-li");//highlighting the new one
         activeSectionBox.innerHTML=j+1;
 
         break;
@@ -183,8 +184,8 @@ function activeSection()
   clearTimeout(timeoutVar); //clearing the timeout if we scroll again to not show it then hide it
   timeoutVar=setTimeout(function() //timeout function to hide the nav-menu by 2.5 secs after we stop scrolling
   {
-    navMenu.classList.add('hidden-nav-menu');
-    listButton.style.transform='rotate(90deg)';
+    navMenu.classList.add("hidden-nav-menu");
+    listButton.style.transform="rotate(90deg)";
     isListOpened=false;
   },2000);
 
@@ -193,7 +194,7 @@ function activeSection()
   else //if we cant hide the nav-menu
   {
     if (isListOpened && isOpenable)
-    navMenu.classList.remove('hidden-nav-menu') ;
+    navMenu.classList.remove("hidden-nav-menu");
   }
 
  }, 100);
@@ -208,24 +209,20 @@ function activeSection()
 
 
 
-
-
-
-
 //Event to start excuting the code when the DOM is ready to avoid crashes
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("DOMContentLoaded", function(){
 
 
 //SETTING THE VARIABLES
-upBtn=document.getElementById('up-btn'); //button scrolls to the top or to the bottom of the page
-upIcon=document.querySelector('.up-icon'); // the icon of that button
-listButton=document.querySelector('.fa-bars'); //the button that shows or hides the nav menu
-headerBar=document.querySelector('#header-bar'); // the page progress bar
+upBtn=document.getElementById("up-btn"); //button scrolls to the top or to the bottom of the page
+upIcon=document.querySelector(".up-icon"); // the icon of that button
+listButton=document.querySelector(".fa-bars"); //the button that shows or hides the nav menu
+headerBar=document.querySelector("#header-bar"); // the page progress bar
 screenHeight=window.innerHeight;
-Footer=document.querySelector('footer');
-sections=document.querySelectorAll('section'); //array of all section elements
+Footer=document.querySelector("footer");
+sections=document.querySelectorAll("section"); //array of all section elements
 upBtn.dataset.section=""+sections.length;
-activeSectionBox= document.getElementById('active-section-box');
+activeSectionBox= document.getElementById("active-section-box");
 navSectionsLen=0; //the number of the buttons on the nav menu
 //...................
 
@@ -245,7 +242,7 @@ setTimeout(function()
   sectionsPos= getSectionsPos();
 
   //variable that stores the last position at the document
-  docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
+  docBottomPos= scrollY+ Footer.getBoundingClientRect().bottom-screenHeight;
   sectionsPos.push(docBottomPos);
   activeSection();
 
@@ -256,12 +253,12 @@ setTimeout(function()
   /* Here we are checking the current position of the viewport "scrollY" if it falls between 
   one section and the section next to it. for example if the position of the current viewport falls between the 
   position the second section and the third one then the second section is active */
-  document.addEventListener('scroll', activeSection);
+  document.addEventListener("scroll", activeSection);
 },300);
 
 
-navSections=document.querySelectorAll('li'); //the buttons on the nav menu
-navMenu= document.querySelector('.nav-menu'); //the navigation menu
+navSections=document.querySelectorAll("li"); //the buttons on the nav menu
+navMenu= document.querySelector(".nav-menu"); //the navigation menu
 //................
 
 
@@ -270,12 +267,12 @@ document.body.onresize=function()
 {
   screenHeight=window.innerHeight;
   sectionsPos= getSectionsPos();
-  docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
+  docBottomPos= scrollY+ Footer.getBoundingClientRect().bottom-screenHeight;
   sectionsPos.push(docBottomPos);
 
   if (window.innerHeight<525 || window.innerWidth<670)
   {
-    navMenu.classList.add('hidden-nav-menu') ;
+    navMenu.classList.add("hidden-nav-menu");
     isOpenable=false;
   }
 
@@ -283,9 +280,7 @@ document.body.onresize=function()
   {
     isOpenable=true;
     if (isListOpened)
-    navMenu.classList.remove('hidden-nav-menu') ;
-
-
+    navMenu.classList.remove("hidden-nav-menu");
   }
 };
 
