@@ -14,17 +14,11 @@ let navSections; //the buttons on the nav menu
 let navMenu; //the navigation menu
 let upBtn; // button scrolls to the top or to the bottom of the page
 let upIcon; // the icon of that button
-let header; //the header
 let isListOpened=true; //boolean to check if the navigation menu is opened or closed
 let isOpenable=true;  //boolean to check if the navigation menu can be opened or not
 let timeoutVar=false;  // variable for storing a return value from setTimeout()
 let canHide=true; //boolean to determine if the nav-menu can auto hide or show based on scrolling 
 let isIconRotated=false; //checking if the top right scroll button is rotated or not
-let isNavFixed=false; // is nav menu has position: fixed?
-let isNavAbs=false; // is nav menu has position: absolute?
-let navMenuOffset; // nav menu offset from the viewport
-let footerOffset; // footer offset from the viewport
-let secContainer;
 //***********************************************************************************
 
 
@@ -72,8 +66,8 @@ function dropListFunc ()
 // 3) function that scrolls to the top or to the bottom of the page
 function scrollBtn()
 {
-  secIndex = Number(upBtn.dataset.section)-1; //getting the number of the section form the data attribute of the button
-  sections[secIndex].scrollIntoView(true); //scrolling to that section
+  secIndex = Number(upBtn.dataset.section)-1;
+  sections[secIndex].scrollIntoView(true);
 }
 //**********************************************************************************
 
@@ -206,32 +200,7 @@ function activeSection()
 
   //this line is for the progress bar at the header that shows where are you on the page
   //we get this bar and set the width to the percentage of the current position we are at
-  headerBar.style.width= (scrollY*100)/docBottomPos+1+"vw";
-
-
-  //here is just some code to reach something like position:sticky (with pos: fixed) casue it was not working properly for me 
-  footerOffset=Footer.getBoundingClientRect().y;
-  if (navMenuOffset > footerOffset)
-  {
-    if (!isNavAbs) {
-    isNavFixed=false;
-    isNavAbs=true;
-    navMenu.removeAttribute('style');
-    navMenu.style.position="sticky";
-    secContainer.style.marginLeft='0';
-    }
-  }
-
-  else
-  {
-    if (!isNavFixed) {
-    isNavFixed=true;
-    isNavAbs=false;
-    navMenu.removeAttribute('style');
-    navMenu.style.position="fixed";
-    secContainer.style.marginLeft='170px';
-    }
-  }
+   headerBar.style.width= (scrollY*100)/docBottomPos+1+"vw";
 }
 //**********************************************************************************
 
@@ -249,15 +218,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
 //SETTING THE VARIABLES
 upBtn=document.getElementById('up-btn'); //button scrolls to the top or to the bottom of the page
-header= document.querySelector('header'); // the header of the page
 upIcon=document.querySelector('.up-icon'); // the icon of that button
 listButton=document.querySelector('.fa-bars'); //the button that shows or hides the nav menu
 headerBar=document.querySelector('#header-bar'); // the page progress bar
 screenHeight=window.innerHeight;
-secContainer=document.querySelector('.sec-container');
-Footer=document.querySelector('footer'); //footer
+Footer=document.querySelector('footer');
 sections=document.querySelectorAll('section'); //array of all section elements
-upBtn.dataset.section=""+sections.length; //giving the data of the up button the last section number to be able to scroll to it
+upBtn.dataset.section=""+sections.length;
 activeSectionBox= document.getElementById('active-section-box');
 navSectionsLen=0; //the number of the buttons on the nav menu
 //...................
@@ -295,7 +262,6 @@ setTimeout(function()
 
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
 navMenu= document.querySelector('.nav-menu'); //the navigation menu
-navMenuOffset=navMenu.getBoundingClientRect().bottom;
 //................
 
 
@@ -318,6 +284,8 @@ document.body.onresize=function()
     isOpenable=true;
     if (isListOpened)
     navMenu.classList.remove('hidden-nav-menu') ;
+
+
   }
 };
 
