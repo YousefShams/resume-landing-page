@@ -14,11 +14,17 @@ let navSections; //the buttons on the nav menu
 let navMenu; //the navigation menu
 let upBtn; // button scrolls to the top or to the bottom of the page
 let upIcon; // the icon of that button
+let header; //the header
 let isListOpened=true; //boolean to check if the navigation menu is opened or closed
 let isOpenable=true;  //boolean to check if the navigation menu can be opened or not
 let timeoutVar=false;  // variable for storing a return value from setTimeout()
 let canHide=true; //boolean to determine if the nav-menu can auto hide or show based on scrolling 
 let isIconRotated=false; //checking if the top right scroll button is rotated or not
+let navMenuHeight; // nav menu height
+let isNavFixed=true; // is nav menu has position: fixed?
+let isNavAbs=false; // is nav menu has position: absolute?
+let navMenuOffset; // nav menu offset from the viewport
+let footerOffset; // footer offset from the viewport
 //***********************************************************************************
 
 
@@ -66,8 +72,8 @@ function dropListFunc ()
 // 3) function that scrolls to the top or to the bottom of the page
 function scrollBtn()
 {
-  secIndex = Number(upBtn.dataset.section)-1;
-  sections[secIndex].scrollIntoView(true);
+  secIndex = Number(upBtn.dataset.section)-1; //getting the number of the section form the data attribute of the button
+  sections[secIndex].scrollIntoView(true); //scrolling to that section
 }
 //**********************************************************************************
 
@@ -200,7 +206,30 @@ function activeSection()
 
   //this line is for the progress bar at the header that shows where are you on the page
   //we get this bar and set the width to the percentage of the current position we are at
-   headerBar.style.width= (scrollY*100)/docBottomPos+1+"vw";
+  headerBar.style.width= (scrollY*100)/docBottomPos+1+"vw";
+
+  footerOffset=Footer.getBoundingClientRect().y;
+
+  if (navMenuOffset >= footerOffset)
+  {
+    if (!isNavAbs) {
+    isNavFixed=false;
+    isNavAbs=true;
+    navMenu.removeAttribute('style');
+    navMenu.style.position="absolute";
+    }
+  }
+
+  else
+  {
+    if (!isNavFixed) {
+    isNavFixed=true;
+    isNavAbs=false;
+    navMenu.removeAttribute('style');
+    navMenu.style.position="fixed";
+    navMenu.style.top="93px";
+    }
+  }
 }
 //**********************************************************************************
 
@@ -218,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 //SETTING THE VARIABLES
 upBtn=document.getElementById('up-btn'); //button scrolls to the top or to the bottom of the page
+header= document.querySelector('header'); // the header of the page
 upIcon=document.querySelector('.up-icon'); // the icon of that button
 listButton=document.querySelector('.fa-bars'); //the button that shows or hides the nav menu
 headerBar=document.querySelector('#header-bar'); // the page progress bar
@@ -262,6 +292,10 @@ setTimeout(function()
 
 navSections=document.querySelectorAll('li'); //the buttons on the nav menu
 navMenu= document.querySelector('.nav-menu'); //the navigation menu
+navMenuOffset=navMenu.getBoundingClientRect().bottom;
+//setting the height of the nav-menu to be: 100vh minus the pixels of the header
+navMenuHeight= navMenu.style.height=Number(getComputedStyle(navMenu,null).height.slice(0,-2))-Number(getComputedStyle(header,null).height.slice(0,-2))+'px';
+
 //................
 
 
@@ -273,7 +307,7 @@ document.body.onresize=function()
   docBottomPos= Footer.offsetTop + Footer.offsetHeight-screenHeight+50;
   sectionsPos.push(docBottomPos);
 
-  if (window.innerHeight<548 || window.innerWidth<955)
+  if (window.innerHeight<525 || window.innerWidth<670)
   {
     navMenu.classList.add('hidden-nav-menu') ;
     isOpenable=false;
@@ -284,8 +318,6 @@ document.body.onresize=function()
     isOpenable=true;
     if (isListOpened)
     navMenu.classList.remove('hidden-nav-menu') ;
-
-
   }
 };
 
